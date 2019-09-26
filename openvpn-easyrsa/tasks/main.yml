@@ -2,7 +2,7 @@
 # tasks file for openvpn-easyrsa
 - name: Install easy rsa
   apt:
-    name: easy-rsa
+    name: easy-rsa=3.0.6-1
   when: inventory_hostname == easy_rsa_host
 
 - name: Init PKI

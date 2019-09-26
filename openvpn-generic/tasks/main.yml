@@ -4,23 +4,23 @@
   apt:
     name:
       - python
-      - python-setuptools
-      - python-dev
-      - build-essential
-      - python-pip
-      - python-apt
-      - sshpass
-      - rsync
+      - python-setuptools=40.8.0-1
+      - python-dev=2.7.16-1
+      - build-essential=12.6
+      - python-pip=18.1-5
+      - python-apt=1.8.4
+      - sshpass=1.06-1
+      - rsync=3.1.3-6
 
 - name: Install python modules
   pip:
     name:
-      - ansible
-      - pexpect
+      - ansible==2.8.5
+      - pexpect==4.7.0
 
 - name: Install OPENVPN
   apt:
-    name: openvpn
+    name: openvpn=2.4.7-1
 
 - name: Create host pki dir
   file:

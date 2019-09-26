@@ -7,7 +7,7 @@
     loop_var: roleinputvar
 
 - name: Build Server Cert
-  shell: easyrsa build-server-full {{server_name}} nopass
+  shell: easyrsa --subject-alt-name="{{id_type}}:{{ansible_host}}" build-server-full {{server_name}} nopass
   args:
     chdir: /root
     creates: "{{PKI_DIR}}/issued/{{server_name}}.crt"

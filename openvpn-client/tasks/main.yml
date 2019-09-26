@@ -9,7 +9,7 @@
     creates: "{{host_pki_dir}}/ta.key"
 
 - name: Build Client Cert
-  shell: easyrsa build-client-full {{ansible_host}} nopass
+  shell: easyrsa --subject-alt-name="{{id_type}}:{{ansible_host}}" build-client-full {{ansible_host}} nopass
   args:
     chdir: /root
     creates: "{{PKI_DIR}}/issued/{{ansible_host}}.crt"

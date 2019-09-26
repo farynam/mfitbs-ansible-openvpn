@@ -7,6 +7,8 @@ server_name: 192.168.50.107
 server_ip: 192.168.50.107
 server_port: 1194
 
+#ID type (subject-alt-name) in cert cen be DNS or IP
+id_type: IP
 
 #openvpn config
 proto: tcp

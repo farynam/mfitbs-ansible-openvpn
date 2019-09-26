@@ -1,10 +1,10 @@
 #host with easyrsa installation
 easy_rsa_host: server
-easy_rsa_host_ip : 192.168.50.107
 
-#Openvpn server/hub
-server_name: 192.168.50.107
-server_ip: 192.168.50.107
+#Openvpn server/hub inventory name
+server_host: server
+
+#Openvpn server/hub port
 server_port: 1194
 
 #ID type (subject-alt-name) in cert cen be DNS or IP
@@ -12,18 +12,33 @@ id_type: IP
 
 #openvpn config
 proto: tcp
+
+#easyrsa CA cert base name
 ca_cn: ca
 
+#easyrsa cert repo path
 PKI_DIR: /root/pki
+
+#host PKI dir (keys, certs. etc)
 host_pki_dir: /etc/pki/openvpn
+
+#openvpn Diffie–Hellman file name base
 dh: dh
-client_to_client: client-to-client
 
+#Diffie–Hellman param length
 dh_len: 2048
-cipher: AES-256-CBC
-log_status: /var/log/openvpn-status.log
-log: /var/log/openvpn.log
-working_dir: target
 
-#easyrsa script
+#Is client to client communication allowed
+client_to_client: true
+
+#openvpn cipher
+cipher: AES-256-CBC
+
+#openvpn status log
+log_status: /var/log/openvpn-status.log
+
+#openvpn log
+log: /var/log/openvpn.log
+
+#easyrsa script path
 EASY_RSA_BIN: /usr/share/easy-rsa

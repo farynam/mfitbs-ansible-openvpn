@@ -4,7 +4,7 @@
     name: openvpn-generic
 
 - name: Copy ta key to the client
-  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{easy_rsa_host_ip}}:{{host_pki_dir}}/ta.key" "{{host_pki_dir}}/ta.key"
+  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{hostvars[server_host]['ansible_default_ipv4']['address']}}:{{host_pki_dir}}/ta.key" "{{host_pki_dir}}/ta.key"
   args:
     creates: "{{host_pki_dir}}/ta.key"
 
@@ -18,17 +18,18 @@
   delegate_to: "{{easy_rsa_host}}"
 
 - name: Copy client cert to the client
-  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{easy_rsa_host_ip}}:{{PKI_DIR}}/issued/{{ansible_host}}.crt" "{{host_pki_dir}}/{{ansible_host}}.crt"
+  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{hostvars[easy_rsa_host]['ansible_default_ipv4']['address']}}:{{PKI_DIR}}/issued/{{ansible_host}}.crt" "{{host_pki_dir}}/{{ansible_host}}.crt"
   args:
     creates: "{{host_pki_dir}}/{{ansible_host}}.crt"
+  
 
 - name: Copy client key to the client
-  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{easy_rsa_host_ip}}:{{PKI_DIR}}/private/{{ansible_host}}.key" "{{host_pki_dir}}/{{ansible_host}}.key"
+  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{hostvars[easy_rsa_host]['ansible_default_ipv4']['address']}}:{{PKI_DIR}}/private/{{ansible_host}}.key" "{{host_pki_dir}}/{{ansible_host}}.key"
   args:
     creates: "{{host_pki_dir}}/{{ansible_host}}.key"
 
 - name: Copy CA to the client
-  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{easy_rsa_host_ip}}:{{PKI_DIR}}/{{ca_cn}}.crt" "{{host_pki_dir}}/{{ca_cn}}.crt"
+  shell: rsync -az --rsh="/usr/bin/sshpass -p {{ansible_password}} ssh -o StrictHostKeyChecking=no -l root" "{{hostvars[easy_rsa_host]['ansible_default_ipv4']['address']}}:{{PKI_DIR}}/{{ca_cn}}.crt" "{{host_pki_dir}}/{{ca_cn}}.crt"
   args:
     creates: "{{host_pki_dir}}/{{ca_cn}}.crt"
 
@@ -45,12 +46,9 @@
     mode: '0660'
   delegate_to: server
 
-#- name: Restart server
-#  shell: systemctl restart openvpn@server.service
-#  delegate_to: server
-
 - name: Restart client
   shell: systemctl restart openvpn@client.service
 
 - name: Enable client
   shell: systemctl enable openvpn@client.service
+  

@@ -1,0 +1,27 @@
+#host with easyrsa installation
+easy_rsa_host: server
+easy_rsa_host_ip : 192.168.50.107
+
+#Openvpn server/hub
+server_name: 192.168.50.107
+server_ip: 192.168.50.107
+server_port: 1194
+
+
+#openvpn config
+proto: tcp
+ca_cn: ca
+
+PKI_DIR: /root/pki
+host_pki_dir: /etc/pki
+dh: dh
+client_to_client: client-to-client
+
+dh_len: 2048
+cipher: AES-256-CBC
+log_status: /var/log/openvpn-status.log
+log: /var/log/openvpn.log
+working_dir: target
+
+#easyrsa script
+EASY_RSA_BIN: /usr/share/easy-rsa

@@ -1,0 +1,5 @@
+- name: Install client
+  hosts: target3
+  roles:
+  - role: openvpn-client
+

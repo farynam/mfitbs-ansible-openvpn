@@ -1,0 +1,6 @@
+- name: install server
+  hosts: server
+  roles:
+  - role: openvpn-server
+
+

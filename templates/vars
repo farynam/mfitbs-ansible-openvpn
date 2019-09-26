@@ -1,0 +1,5 @@
+export KEY_COUNTRY={{KEY_COUNTRY}}
+export KEY_PROVINCE={{KEY_PROVINCE}}
+export KEY_CITY={{KEY_CITY}}
+export KEY_ORG={{KEY_ORG}}
+export KEY_EMAIL={{KEY_EMAIL}}

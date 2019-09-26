@@ -1,4 +1,4 @@
-[all]
+[machines]
 server ansible_host=192.168.50.107 ansible_user=root ansible_password=qwerty ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 target3 ansible_host=192.168.50.109 ansible_user=root ansible_password=qwerty ansible_ssh_common_args='-o StrictHostKeyChecking=no' client_addr=10.8.0.2 client_mask=255.255.255.0
 target4 ansible_host=192.168.50.112 ansible_user=root ansible_password=qwerty ansible_ssh_common_args='-o StrictHostKeyChecking=no' client_addr=10.8.0.3 client_mask=255.255.255.0

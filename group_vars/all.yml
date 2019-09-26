@@ -15,7 +15,7 @@ proto: tcp
 ca_cn: ca
 
 PKI_DIR: /root/pki
-host_pki_dir: /etc/pki
+host_pki_dir: /etc/pki/openvpn
 dh: dh
 client_to_client: client-to-client
 

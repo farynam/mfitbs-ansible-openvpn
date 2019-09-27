@@ -3,7 +3,7 @@
 Simple private network deployment tool through Ansible based on OpenVPN.
 
 ## Requirements:
-* ansible 2.8.5
+* Ansible 2.8.5
 
 
 ## Tested on:
@@ -46,7 +46,7 @@ group_vars/all.yml
 
     ansible-playbook provision_client.yml -i inventory.txt    
     
-###### Or Launch through Virtualbox with vagrant provisioning
+###### Or Launch through Virtualbox through VM
     vagrant up 
     vagrant ssh
     ...

@@ -36,6 +36,10 @@ group_vars/all.yml
 * log - openvpn log. 
 
 
+## Installation
+
+ansible-galaxy install --role-file requirements.yml --roles-path=roles
+
 ## Run
 
 ###### Provision server

@@ -1,4 +1,0 @@
----
-# vars file for openvpn-server
-
-EASY_RSA_BIN: /usr/share/easy-rsa/

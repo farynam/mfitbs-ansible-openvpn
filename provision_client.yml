@@ -2,6 +2,6 @@
   hosts: server, target3, target4 #server because of variables
   serial: 1 #easy rsa gets randomly messed without this
   roles:
-  - role: openvpn-client
+  - role: farynam.mfitbs_openvpn_client
     when: inventory_hostname != server_host
 

@@ -74,6 +74,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "rsync" , type: "shell", inline: "apt-get install rsync"
   config.vm.provision "pymodules" , type: "shell", inline: "pip2 install pexpect"
   config.vm.provision "ansible" , type: "shell", inline: "pip2 install ansible"
-  config.vm.provision "sshkey" , type: "shell", inline: "ssh-keygen -t rsa -C ansible -f /vagrant/ssh/id_rsa -P ''"
+  config.vm.provision "ansible" , type: "shell", inline: "pip install ansible-lint --user"
+  config.vm.provision "ansible" , type: "shell", inline: "pip install yamllint --user"
 
 end

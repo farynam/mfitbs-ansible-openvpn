@@ -38,7 +38,9 @@ group_vars/all.yml
 
 ## Installation
 
-ansible-galaxy install --role-file requirements.yml --roles-path=roles
+    mkdir roles
+    ansible-galaxy install --role-file requirements.yml --roles-path=roles
+
 
 ## Run
 
